@@ -3,7 +3,8 @@ import Nav  from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import '../App.css'
 
-function NavigationBar() {
+function NavigationBar(props) {
+
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
 
@@ -11,9 +12,13 @@ function NavigationBar() {
                 <Link className='link' to="/">Home</Link>
             </Nav.Link>
 
-
             <Nav.Link>
-                <Link className='link' to="/login">Login</Link>
+                {
+                    props.username === '' ?
+                    <Link className='link' to="/login">Login</Link>
+                    :
+                    <Link className='link' to="/logout">{props.username}, Logout</Link>
+                }
             </Nav.Link>
 
         </Navbar>
