@@ -5,12 +5,13 @@ import Login from './components/Login';
 import { useHistory } from 'react-router-dom';
 import NavigationBar from "./components/NavigationBar";
 import { useState } from 'react';
+import Quiz from './components/Quiz';
 
 
 function App() {
     const history = useHistory();
     const [username, setUsername] = useState(localStorage.getItem('username') || '');
-    const [quizNum, setQuizNum] = useState(0);
+    const [quizNum, setQuizNum] = useState(localStorage.getItem('quizID') || 0);
 
     let onLoggedIn = (email) => {
         localStorage.setItem('username', email);
@@ -18,8 +19,8 @@ function App() {
     }
 
     let onQuizClicked = (quizID) => {
+        localStorage.setItem('quizID', quizID);
         setQuizNum(quizID);
-        console.log(quizID);
     }
     return (
         <HashRouter>
@@ -33,7 +34,7 @@ function App() {
                         <Login onLoggedIn={onLoggedIn} />
                     </Route>
                     <Route path="/quiz" >
-                        
+                        <Quiz quizNum={quizNum}/>
                     </Route>
                 </Switch>
             </Container>
