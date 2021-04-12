@@ -13,7 +13,7 @@ function Home(props) {
     return (
         <div>
             <h2 style={{ textAlign: "center" }}>Home</h2>
-            {createFlowers()}
+             {createFlowers()}
         </div>
     );
 
