@@ -1,4 +1,3 @@
-//import quizzes from '../data';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -31,8 +30,13 @@ export default function QuizSlide(props) {
         }
     });
 
-    return (
-        <Row><Col>
+
+    function createQuizSlide() {
+        if(quizzes === null) {
+            return [];
+        }
+
+        return (
             <Figure>
                 <Figure.Image width={171} height={180}
                     alt={quizzes[props.quizNum][props.questionNum].answer}
@@ -44,7 +48,12 @@ export default function QuizSlide(props) {
                     <br/>{answer}                   
                 </Figure.Caption>
             </Figure>
+        );
+    }
 
+    return (
+        <Row><Col>
+            {createQuizSlide()}
         </Col></Row>
     );
 }
