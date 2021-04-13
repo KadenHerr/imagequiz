@@ -1,14 +1,32 @@
-import flowers from '../flowers';
+//import flowers from '../flowers';
 import { Link } from "react-router-dom";
 import Figure from 'react-bootstrap/Figure';
 import 'bootstrap/dist/css/bootstrap.css';
+import { useState, useEffect } from 'react';
+import api from '../communication/api';
 
 
 function Home(props) {
 
+    const [flowers, setFlowers] = useState(null);
+
     let onImageClick = (event) => {
         props.onQuizClicked(event.target.id);
     }
+
+    
+    // Get the flowers array from the api
+    useEffect(() => {
+        if(flowers === null) {
+            api.getFlowers()
+            .then(x => setFlowers(x))
+            .catch(e => console.log(e));
+        }
+        console.log("useEffect ran");
+    });
+    
+    
+
 
     return (
         <div>

@@ -6,9 +6,15 @@ let getFlowers = () => {
     .then(response => response.json());
 };
 
+let getQuizzes = () => {
+    return fetch(apiHost + '/quizzes')
+    .then(response => response.json());
+};
+
 
 let api = {
-    getFlowers: getFlowers
+    getFlowers: getFlowers,
+    getQuizzes: getQuizzes
 };
 
 export default api;
