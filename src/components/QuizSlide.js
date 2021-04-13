@@ -1,4 +1,4 @@
-import quizzes from '../data';
+//import quizzes from '../data';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -10,7 +10,7 @@ import api from '../communication/api';
 export default function QuizSlide(props) {
     const [answer, setAnswer] = useState("");
     const [btnState, setBtnState] = useState(false);
-    //const [quizzes, setQuizzes] = useState(null);
+    const [quizzes, setQuizzes] = useState(null);
 
     let onAnswerGiven = (event) => {
         setBtnState(true);
@@ -22,15 +22,15 @@ export default function QuizSlide(props) {
             props.onAnswerGiven(false);
         }
     }
-/*
+
     useEffect(() => {
         if(quizzes === null) {
             api.getQuizzes()
-            .then(x => setPlaces(x))
+            .then(x => setQuizzes(x))
             .catch(e => console.log(e));
         }
     });
-*/
+
     return (
         <Row><Col>
             <Figure>
