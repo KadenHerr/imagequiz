@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import QuizSlide from './QuizSlide';
 import { useState } from 'react';
+import api from '../communication/api';
 
 
 
@@ -30,6 +31,8 @@ export default function Quiz(props) {
         // When all of the questions have been answered, display the results.
         if (answerCount >= 6) {
             alert("Total score is: "+ (score + lastPoint));
+            api.addScore(score + lastPoint)
+            .catch(e => console.log(e));
         }
     }
 

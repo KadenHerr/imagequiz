@@ -11,10 +11,21 @@ let getQuizzes = () => {
     .then(response => response.json());
 };
 
+let addScore = (score) => {
+    return fetch(apiHost + '/score', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(score)
+    });
+}
+
 
 let api = {
     getFlowers: getFlowers,
-    getQuizzes: getQuizzes
+    getQuizzes: getQuizzes,
+    addScore: addScore
 };
 
 export default api;
