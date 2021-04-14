@@ -31,7 +31,8 @@ export default function Quiz(props) {
         // When all of the questions have been answered, display the results.
         if (answerCount >= 6) {
             alert("Total score is: "+ (score + lastPoint));
-            api.addScore(score + lastPoint)
+            let retval = {score: score+lastPoint};
+            api.addScore(retval)
             .catch(e => console.log(e));
         }
     }
