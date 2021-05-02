@@ -9,7 +9,6 @@ import Quiz from './components/Quiz';
 
 
 function App() {
-    const history = useHistory();
     const [username, setUsername] = useState(localStorage.getItem('username') || '');
     const [quizNum, setQuizNum] = useState(localStorage.getItem('quizID') || 0);
 
